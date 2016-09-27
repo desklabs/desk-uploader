@@ -6,18 +6,14 @@ class Customer
   def self.import(file, domain, username, password)
     cipher = Gibberish::AES::CBC.new(ENV['SIDEKIQ_ENCRYPTION_KEY'])
     password = cipher.encrypt(password)
-    x = 0
-     SmarterCSV.process(file.path) do |row|
-      job = {
-        :data => row.first,
-        :domain => domain,
-        :username => username,
-        :password => password
-      }
-      if ProcessInboundCustomerRow.perform_in(10.seconds, job)
-        x += 1
-      end
-    end
-    return x
+    
+    ProcessInboundCSVFile.perform_async(file, domain, username, password)
   end
+
+  # def self.import(file, domain, username, password)
+
+  #   x = 0
+
+  #   return x
+  # end
 end
