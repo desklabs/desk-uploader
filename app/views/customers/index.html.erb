@@ -1,0 +1,16 @@
+<%= flash[:notice] %>
+
+	
+<h4>Import customers</h4>
+	<%= form_tag import_customers_path, multipart: true do %>
+    <%= label_tag(:domain, "Domain:") %>
+    <%= text_field_tag :domain %><br/>
+    <%= label_tag(:username, "Username:") %>
+    <%= text_field_tag :username %><br/>
+    <%= label_tag(:password, "Password:") %>
+    <%= password_field_tag :password %><br/>
+    <%= label_tag(:file, "Customer CSV File:") %>
+	  <%= file_field_tag :file %><br/>
+	  <%= submit_tag "Import CSV" %>
+	<% end %>
+</div>
