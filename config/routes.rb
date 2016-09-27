@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   resources :customers do
     collection { post :import }
   end
-  #root to: "customers#index"
+  root to: "customers#index"
 
   require 'sidekiq/web'
   mount Sidekiq::Web => '/sidekiq'
