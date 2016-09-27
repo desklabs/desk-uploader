@@ -9,6 +9,7 @@ class Customer
     x = 0
     #CSV.foreach(file.path, headers: true) do |row|
     SmarterCSV.process(file.path) do |row|
+      print "."
       job = {
         :data => row.first,
         :domain => domain,
