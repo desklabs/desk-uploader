@@ -15,7 +15,7 @@ class Customer
         :username => username,
         :password => password
       }
-      if ProcessInboundCustomerRow.perform_async(job)
+      if ProcessInboundCustomerRow.perform_in(10.seconds, job)
         x += 1
       end
     end
