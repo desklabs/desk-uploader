@@ -6,8 +6,8 @@ class Customer
   def self.import(file, domain, username, password)
     cipher = Gibberish::AES::CBC.new(ENV['SIDEKIQ_ENCRYPTION_KEY'])
     password = cipher.encrypt(password)
-    
-    ProcessInboundCSVFile.perform_async(file, domain, username, password)
+
+    ProcessInboundCSVFile.perform_async(file.path, domain, username, password)
   end
 
   # def self.import(file, domain, username, password)
