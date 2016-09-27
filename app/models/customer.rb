@@ -1,7 +1,7 @@
 class Customer
   # include Mongoid::Document
   # include Mongoid::Attributes::Dynamic
-  #belongs_to :desk
+  # belongs_to :desk
 
   def self.import(file, domain, username, password)
     cipher = Gibberish::AES::CBC.new(ENV['SIDEKIQ_ENCRYPTION_KEY'])
@@ -15,7 +15,7 @@ class Customer
         :username => username,
         :password => password
       }
-      if ProcessInboundCustomerRow.perform_in(30.seconds, job)
+      if ProcessInboundCustomerRow.perform_async(job)
         x += 1
       end
     end
