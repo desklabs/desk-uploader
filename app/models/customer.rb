@@ -16,10 +16,10 @@ class Customer
     #     :username => username,
     #     :password => password
     #   }
-    #   if ProcessInboundCustomerRow.perform_in(10.seconds, job)
-    #     x += 1
-    #   end
-    # end
+      #if ProcessInboundCustomerRow.perform_in(10.seconds, job)
+        x += 1
+      #end
+    #end
     return x
   end
 end
