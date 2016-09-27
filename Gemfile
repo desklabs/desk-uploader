@@ -36,6 +36,8 @@ gem 'smarter_csv'
 # gem 'mongoid-encrypted-fields'
 gem "gibberish"
 gem 'desk_api'
+gem 'sidekiq-superworker'
+
 
 
 group :development, :test do
