@@ -7,8 +7,8 @@ class Customer
     cipher = Gibberish::AES::CBC.new(ENV['SIDEKIQ_ENCRYPTION_KEY'])
     password = cipher.encrypt(password)
     x = 0
-    CSV.foreach(file.path, headers: true) do |row|
-    # SmarterCSV.process(file.path) do |row|
+    #CSV.foreach(file.path, headers: true) do |row|
+     SmarterCSV.process(file.path) do |row|
     #   print "."
     #   job = {
     #     :data => row.first,
