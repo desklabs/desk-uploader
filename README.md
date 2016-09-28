@@ -1,28 +1,20 @@
-== README
+This is a rails app that takes an uploaded CSV file and upload the data into a
+Desk.com account.  It uses MongoDB for temporary storage and Sidekiq for
+background processing.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+ 
 
-Things you may want to cover:
+The basic process is:
 
-* Ruby version
+1.  User uploads a CSV
 
-* System dependencies
+2.  The CSV is stored into MongoDB’s GridFS
 
-* Configuration
+3.  A background job parses the CSV and creates a new background job for each
+    row
 
-* Database creation
+4.  The workers then process the jobs.
 
-* Database initialization
+5.  For faster processing you can spin up more dynos on Heroku
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+ 
