@@ -37,6 +37,7 @@ gem 'smarter_csv'
 gem "gibberish"
 gem 'desk_api'
 gem 'sidekiq-superworker'
+gem 'newrelic_rpm'
 
 gem 'rails_12factor'
 
