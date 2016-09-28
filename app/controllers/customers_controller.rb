@@ -5,6 +5,6 @@ class CustomersController < ApplicationController
 
   def import
     num_imported = Customer.import(params[:file], params[:domain], params[:username], params[:password])
-    redirect_to root_url, notice: "#{num_imported} rows queued"
+    redirect_to root_url, notice: "CSV queued and is uploading in the background."
   end
 end

@@ -8,6 +8,7 @@ class ProcessInboundCustomerRow
   end
 
   def perform(job)
+
     cipher = Gibberish::AES::CBC.new(ENV['SIDEKIQ_ENCRYPTION_KEY'])
     password = cipher.decrypt(job["password"])
     # do something
