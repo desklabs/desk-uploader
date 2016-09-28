@@ -140,7 +140,7 @@ test:
           mode: :primary
         max_pool_size: 1
 
-        production:
+production:
   clients:
     default:
      # The standard MongoDB connection URI allows for easy
