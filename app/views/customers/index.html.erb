@@ -1,6 +1,7 @@
 <%= flash[:notice] %>
 
-	
+This app is in beta and should not be used on a production site.
+
 <h4>Import customers</h4>
 	<%= form_tag import_customers_path, multipart: true do %>
     <%= label_tag(:domain, "Domain:") %>
