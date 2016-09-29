@@ -39,6 +39,7 @@ gem 'desk_api'
 gem 'sidekiq-superworker'
 gem 'newrelic_rpm'
 gem 'version'
+
 gem 'rails_12factor'
 
 gem 'aws-sdk', '~> 2'
