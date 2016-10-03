@@ -16,7 +16,7 @@ class ProcessInboundCSVFile
       jobs << job
   #    ProcessInboundCustomerRow.perform_async(job)
     end
-    CreateJobsForCSVFile.perform_async(jobs, username)
+    CreateJobsForCSVFile.perform_async(jobs)
     uploaded_file.destroy
   end
 

@@ -31,9 +31,9 @@ gem 'smarter_csv'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
-# gem 'mongoid'
-# gem 'bson_ext'
-# gem 'mongoid-encrypted-fields'
+gem 'mongoid'
+gem 'bson_ext'
+#gem 'mongoid-encrypted-fields'
 gem "gibberish"
 gem 'desk_api'
 gem 'sidekiq-superworker'

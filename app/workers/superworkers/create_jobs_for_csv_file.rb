@@ -1,4 +1,4 @@
-Superworker.define(:CreateJobsForCSVFile, :jobs, :username) do
+Superworker.define(:CreateJobsForCSVFile, :jobs) do
   WorkerStart()
   batch jobs: :job do
     ProcessInboundCustomerRow :job
