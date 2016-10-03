@@ -81,7 +81,7 @@ class ProcessInboundCustomerRow
     end
 
     begin
-      #new_customer = DeskApi.customers.create(data)
+      new_customer = DeskApi.customers.create(data)
     rescue DeskApi::Error => e
       raise e
     end
