@@ -13,10 +13,4 @@ class Customer
     ProcessInboundCSVFile.perform_async(domain, username, password, u.id.to_s)
   end
 
-  # def self.import(file, domain, username, password)
-
-  #   x = 0
-
-  #   return x
-  # end
 end
