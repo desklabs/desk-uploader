@@ -4,7 +4,7 @@ class UploadedCsvFile
   field :file, type: String
 
   belongs_to :user
-  has_many :rows
+  has_many :rows, dependent: :delete
 
   mount_uploader :file, CsvFileUploader
 end
