@@ -80,7 +80,6 @@ class ProcessCustomerRow
 
     begin
       new_customer = DeskApi.customers.create(data)
-      row.delete
     rescue DeskApi::Error => e
       row[:_failed] = true
       row.save
