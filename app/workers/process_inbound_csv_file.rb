@@ -2,22 +2,20 @@ class ProcessInboundCSVFile
 
   include Sidekiq::Worker
 
-  def perform(domain, username, password, uid)
-    #   binding.pry
-    uploaded_file = UploadedCsvFile.where(id: uid).first
-   # jobs = []
+  def perform(uid)
+    uploaded_file = UploadedCsvFile.find(id: uid)
+
+    jobs = []
+
     CSV.parse(uploaded_file.file.read, headers: true, :encoding => 'ISO-8859-1') do |row|
-      job = {
-        :data => row.to_hash,
-        :domain => domain,
-        :username => username,
-        :password => password
-      }
-  #    jobs << job
-      ProcessInboundCustomerRow.perform_async(job)
+      row["external_id"] = row["id"]
+      row.delete "id"
+      r = Row.create(:data => row.to_json)
+      uploaded_file.rows.push(r)
+      jobs << r.id.to_s
     end
-   # CreateJobsForCSVFile.perform_async(jobs)
-    uploaded_file.destroy
+    ProcessCustomerRows.perform_async(jobs, uid)
+
   end
 
 end
