@@ -33,7 +33,7 @@ gem 'smarter_csv'
 
 gem 'mongoid'
 gem 'bson_ext'
-#gem 'mongoid-encrypted-fields'
+gem 'mongoid-encrypted-fields'
 gem "gibberish"
 gem 'desk_api'
 gem 'sidekiq-superworker'
