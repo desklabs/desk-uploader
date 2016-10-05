@@ -25,7 +25,6 @@ class ProcessCustomerRow
 
     end
 
-
     # look for our custom fields and add them to the data hash if found
     custom_fields = {}
     decoded_row.each do |attr|
