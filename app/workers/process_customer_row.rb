@@ -9,6 +9,8 @@ class ProcessCustomerRow
 
   def perform(row_id, user_id)
 
+puts "Starting #{Time.now.getutc}"
+
     row = Row.find(row_id)
 
     decoded_row = JSON.parse(row.data)
@@ -16,14 +18,15 @@ class ProcessCustomerRow
     details = {:domain => row.uploadedCsvFile.user.domain, :username => row.uploadedCsvFile.user.username, :password => row.uploadedCsvFile.user.password}
 
     data ={}
+puts "Starting #{Time.now.getutc} case switch"
 
     decoded_row.each do |attr|
       case attr[0]
       when "first_name", "last_name", "external_id", "title", "company"
         data[attr[0]] = attr[1]
       end
-
     end
+puts "Starting #{Time.now.getutc} custom fields"
 
     # look for our custom fields and add them to the data hash if found
     custom_fields = {}
@@ -34,6 +37,8 @@ class ProcessCustomerRow
     end
 
     data[:custom_fields] = custom_fields unless custom_fields == {}
+
+puts "Starting #{Time.now.getutc} address"
 
     # look for any address_ columns and add them to the data hash
     address_array = []
@@ -46,6 +51,7 @@ class ProcessCustomerRow
     end
 
     data[:addresses] = address_array unless address_array == []
+puts "Starting #{Time.now.getutc} emails"
 
     # look for any email_ columns and add them to the data hash
     emails_array = []
@@ -59,6 +65,7 @@ class ProcessCustomerRow
 
     data[:emails] = emails_array unless emails_array == []
 
+puts "Starting #{Time.now.getutc} phones"
     # look for any phone_ columns and add them to the data hash
     phones_array = []
 
@@ -70,6 +77,7 @@ class ProcessCustomerRow
     end
 
     data[:phone_numbers] = phones_array unless phones_array == []
+puts "Starting #{Time.now.getutc} desk API config"
 
     DeskApi.configure do |config|
       # basic authentication
@@ -77,13 +85,20 @@ class ProcessCustomerRow
       config.password = details[:password]
       config.endpoint = "https://#{details[:domain]}.desk.com"
     end
+puts "Starting #{Time.now.getutc} desk API call"
 
     begin
-      #new_customer = DeskApi.customers.create(data)
+
+      new_customer = DeskApi.customers.create(data)
     rescue DeskApi::Error => e
+      puts "Starting #{Time.now.getutc} row failed"
+
       row[:_failed] = true
       row.save
+      puts "Ending #{Time.now.getutc} row failed"
+
     end
+puts "End #{Time.now.getutc} row"
 
   end
 end
