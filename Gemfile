@@ -30,6 +30,7 @@ gem 'puma'
 gem 'smarter_csv'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
+gem 'scout_apm'
 
 gem 'mongoid'
 gem 'bson_ext'
