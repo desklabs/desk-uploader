@@ -87,7 +87,9 @@ class ProcessCustomerRow
     rescue DeskApi::Error => e
       # binding.pry
       row[:_failed] = true
+      row[:_error] = e
       row.save
+      raise
     end
   end
 end

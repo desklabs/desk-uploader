@@ -21,18 +21,41 @@ class UploadedCsvFile
     puts "***************************"
     puts "***************************"
     puts "***************************"
-    puts status.data
-    puts status.failure_info # an array of failed jobs
-
-  end
-  def on_success(status, options)
-
-
     this_file = UploadedCsvFile.find(options['uid'])
     this_user = this_file.user
     failed_rows = this_file.rows.where(_failed: true)
 
+
+    csv_string = CSV.generate do |csv|
+      csv << ["headers"]
+      failed_rows.each do |fr|
+        #binding.pry
+        parsed = JSON.parse(fr)
+        csv << [parsed["first_name"]]
+      end
+    end
+    UserNotifier.send_job_done_email(this_user).deliver_now
+    this_user.delete
+
+  end
+  def on_success(status, options)
+
+    #binding.pry
+    this_file = UploadedCsvFile.find(options['uid'])
+    this_user = this_file.user
+    failed_rows = this_file.rows.where(_failed: true)
+
+
+    # csv_string = CSV.generate do |csv|
+    #   csv << ["headers"]
+    #   failed_rows.each do |fr|
+    #     binding.pry
+    #     parsed = JSON.parse(fr.data)
+    #     csv << [parsed["first_name"]]
+    #   end
+    # end
     UserNotifier.send_job_done_email(this_user).deliver_now
     this_user.delete
   end
+
 end
