@@ -9,19 +9,18 @@ class ProcessCustomerRow
 
   def perform(row_id)
 
-puts "Starting #{Time.now.getutc}"
-
     row = Row.find(row_id)
-begin
-    decoded_row = JSON.parse(row.data)
-rescue
-  binding.pry
-end
+    begin
+      decoded_row = JSON.parse(row.data)
+    rescue
+      row[:_failed] = true
+      row.save
+      return
+    end
 
     details = {:domain => row.uploadedCsvFile.user.domain, :username => row.uploadedCsvFile.user.username, :password => row.uploadedCsvFile.user.password}
 
     data ={}
-puts "Starting #{Time.now.getutc} case switch"
 
     decoded_row.each do |attr|
       case attr[0]
@@ -29,7 +28,6 @@ puts "Starting #{Time.now.getutc} case switch"
         data[attr[0]] = attr[1]
       end
     end
-puts "Starting #{Time.now.getutc} custom fields"
 
     # look for our custom fields and add them to the data hash if found
     custom_fields = {}
@@ -40,8 +38,6 @@ puts "Starting #{Time.now.getutc} custom fields"
     end
 
     data[:custom_fields] = custom_fields unless custom_fields == {}
-
-puts "Starting #{Time.now.getutc} address"
 
     # look for any address_ columns and add them to the data hash
     address_array = []
@@ -54,7 +50,6 @@ puts "Starting #{Time.now.getutc} address"
     end
 
     data[:addresses] = address_array unless address_array == []
-puts "Starting #{Time.now.getutc} emails"
 
     # look for any email_ columns and add them to the data hash
     emails_array = []
@@ -68,7 +63,6 @@ puts "Starting #{Time.now.getutc} emails"
 
     data[:emails] = emails_array unless emails_array == []
 
-puts "Starting #{Time.now.getutc} phones"
     # look for any phone_ columns and add them to the data hash
     phones_array = []
 
@@ -80,7 +74,6 @@ puts "Starting #{Time.now.getutc} phones"
     end
 
     data[:phone_numbers] = phones_array unless phones_array == []
-puts "Starting #{Time.now.getutc} desk API config"
 
     DeskApi.configure do |config|
       # basic authentication
@@ -88,22 +81,13 @@ puts "Starting #{Time.now.getutc} desk API config"
       config.password = details[:password]
       config.endpoint = "https://#{details[:domain]}.desk.com"
     end
-puts "Starting #{Time.now.getutc} desk API call"
 
     begin
-
       new_customer = DeskApi.customers.create(data)
     rescue DeskApi::Error => e
-     # binding.pry
-      puts "Starting #{Time.now.getutc} row failed"
-
+      # binding.pry
       row[:_failed] = true
       row.save
-      puts "Ending #{Time.now.getutc} row failed"
-
     end
-puts "End #{Time.now.getutc} row"
-
-#  sleep 4
   end
 end
