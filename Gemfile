@@ -37,6 +37,7 @@ gem 'bson_ext'
 gem 'mongoid-encrypted-fields'
 gem "gibberish"
 gem 'desk_api'
+gem 'sidekiq-batch'
 gem 'sidekiq-superworker'
 gem 'newrelic_rpm'
 gem 'version'
