@@ -38,12 +38,12 @@ GEM
       tzinfo (~> 1.1)
     addressable (2.3.8)
     arel (6.0.3)
-    aws-sdk (2.6.5)
-      aws-sdk-resources (= 2.6.5)
-    aws-sdk-core (2.6.5)
+    aws-sdk (2.6.11)
+      aws-sdk-resources (= 2.6.11)
+    aws-sdk-core (2.6.11)
       jmespath (~> 1.0)
-    aws-sdk-resources (2.6.5)
-      aws-sdk-core (= 2.6.5)
+    aws-sdk-resources (2.6.11)
+      aws-sdk-core (= 2.6.11)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
     bson (4.1.1)
@@ -109,7 +109,7 @@ GEM
     minitest (5.9.1)
     mongo (2.3.0)
       bson (~> 4.1)
-    mongoid (5.1.4)
+    mongoid (5.1.5)
       activemodel (~> 4.0)
       mongo (~> 2.1)
       origin (~> 2.2)
@@ -122,10 +122,10 @@ GEM
       mongoid (>= 3.0, < 7.0)
     multi_json (1.12.1)
     multipart-post (2.0.0)
-    newrelic_rpm (3.16.3.323)
+    newrelic_rpm (3.17.0.325)
     nokogiri (1.6.8.1)
       mini_portile2 (~> 2.1.0)
-    origin (2.2.0)
+    origin (2.2.2)
     pry (0.10.4)
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
@@ -179,14 +179,16 @@ GEM
       sprockets-rails (>= 2.0, < 4.0)
       tilt (>= 1.1, < 3)
     scout_apm (2.1.13)
-    sdoc (0.4.1)
+    sdoc (0.4.2)
       json (~> 1.7, >= 1.7.7)
       rdoc (~> 4.0)
-    sidekiq (4.2.2)
+    sidekiq (4.2.3)
       concurrent-ruby (~> 1.0)
       connection_pool (~> 2.2, >= 2.2.0)
-      rack-protection (~> 1.5)
+      rack-protection (>= 1.5.0)
       redis (~> 3.2, >= 3.2.1)
+    sidekiq-batch (0.1.1)
+      sidekiq (>= 3)
     sidekiq-superworker (1.2.0)
       activemodel (>= 3.2)
       activesupport (>= 3.2)
@@ -246,6 +248,7 @@ DEPENDENCIES
   scout_apm
   sdoc (~> 0.4.0)
   sidekiq
+  sidekiq-batch
   sidekiq-superworker
   smarter_csv
   spring
@@ -258,4 +261,4 @@ RUBY VERSION
    ruby 2.3.0p0
 
 BUNDLED WITH
-   1.13.1
+   1.13.5

@@ -7,13 +7,16 @@ class ProcessCustomerRow
     Sidekiq.logger.warn "Failed #{msg['class']} with #{msg['args']}: #{msg['error_message']}"
   end
 
-  def perform(row_id, user_id)
+  def perform(row_id)
 
 puts "Starting #{Time.now.getutc}"
 
     row = Row.find(row_id)
-
+begin
     decoded_row = JSON.parse(row.data)
+rescue
+  binding.pry
+end
 
     details = {:domain => row.uploadedCsvFile.user.domain, :username => row.uploadedCsvFile.user.username, :password => row.uploadedCsvFile.user.password}
 
@@ -91,6 +94,7 @@ puts "Starting #{Time.now.getutc} desk API call"
 
       new_customer = DeskApi.customers.create(data)
     rescue DeskApi::Error => e
+     # binding.pry
       puts "Starting #{Time.now.getutc} row failed"
 
       row[:_failed] = true
@@ -100,5 +104,6 @@ puts "Starting #{Time.now.getutc} desk API call"
     end
 puts "End #{Time.now.getutc} row"
 
+#  sleep 4
   end
 end
