@@ -25,8 +25,6 @@ class UploadedCsvFile
       UserNotifier.send_job_done_email_failures(this_file).deliver_now
     end
     this_file.user.destroy
-
-
   end
 
 end

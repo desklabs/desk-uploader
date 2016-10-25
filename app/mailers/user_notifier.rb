@@ -29,13 +29,15 @@ class UserNotifier < ApplicationMailer
     @this_file = file
     @elapsed_time = distance_of_time_in_words(Time.now - @this_file.created_at)
     @user = @this_file.user
-    #@failed_rows = @this_file.rows.failed
+    @failed_rows = @this_file.rows.failed
     @total_rows = @this_file.rows.count
-    # csv_string = CSV.generate do |csv|
-    #   csv << ["headers"]
-    #   failed_rows.each do |fr|
+
+
+    # csv_string = CSV.generate(headers: true) do |csv|
+    #   csv << ["first_name"]
+    #   @failed_rows.each do |fr|
     #     #binding.pry
-    #     parsed = JSON.parse(fr)
+    #     parsed = JSON.parse(fr.data)
     #     csv << [parsed["first_name"]]
     #   end
     # end
