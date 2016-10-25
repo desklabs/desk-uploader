@@ -4,6 +4,7 @@ class Row
 
   field :data, type: Mongoid::EncryptedString
 
+  scope :failed, ->{ where(:_failed.exists =>true) }
 
   belongs_to :uploadedCsvFile
 end
