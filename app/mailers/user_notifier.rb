@@ -4,7 +4,7 @@ class UserNotifier < ApplicationMailer
   default :from => 'do_not_reply@example.com'
 
   # send a signup email to the user, pass in the user object that   contains the user's email address
-  def send_job_done_email(f_id)
+  def send_job_done_email_no_failures(f_id)
 
     @this_file = UploadedCsvFile.find(f_id)
     @elapsed_time = distance_of_time_in_words(Time.now - @this_file.created_at)

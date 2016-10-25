@@ -21,7 +21,7 @@ class UploadedCsvFile
     this_file = UploadedCsvFile.find(options['uid'])
     this_user = this_file.user
 
-    UserNotifier.send_job_done_email(options['uid']).deliver_now
+    UserNotifier.send_job_done_email_no_failures(options['uid']).deliver_now
     this_user.destroy
 
 
