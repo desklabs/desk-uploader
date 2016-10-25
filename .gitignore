@@ -16,3 +16,7 @@
 .idea
 
 passwords.txt
+
+Procfile.local
+
+procodile.log
