@@ -32,6 +32,8 @@ gem 'smarter_csv'
 # gem 'capistrano-rails', group: :development
 gem 'scout_apm'
 
+gem 'clockwork'
+
 gem 'mongoid'
 gem 'bson_ext'
 gem 'mongoid-encrypted-fields'

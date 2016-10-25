@@ -7,7 +7,6 @@ class ProcessInboundCSVFile
 
     batch = Sidekiq::Batch.new
     batch.description = "ProcessInboundCSVFile"
-    batch.on(:success, UploadedCsvFile, 'uid' => uid)
     batch.on(:complete, UploadedCsvFile, 'uid' => uid)
     uploaded_file.batch_id = batch.bid
     uploaded_file.save

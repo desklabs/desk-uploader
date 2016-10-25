@@ -5,6 +5,6 @@ class User
   field :domain, type: Mongoid::EncryptedString
   field :password, type: Mongoid::EncryptedString
 
-  has_many :uploadedCsvFiles, dependent: :delete
+  has_many :uploadedCsvFiles, dependent: :destroy
 
 end
