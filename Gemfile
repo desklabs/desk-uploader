@@ -44,7 +44,7 @@ gem 'sidekiq-superworker'
 gem 'newrelic_rpm'
 gem 'version'
 gem 'redis'
-gem 'fastercsv'
+#gem 'fastercsv'
 
 gem 'rails_12factor'
 
