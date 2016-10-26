@@ -46,6 +46,9 @@ gem 'version'
 gem 'redis'
 #gem 'fastercsv'
 
+#gem 'rchardet'
+gem 'charlock_holmes'
+
 gem 'rails_12factor'
 
 gem 'aws-sdk', '~> 2'

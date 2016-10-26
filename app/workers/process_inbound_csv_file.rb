@@ -10,9 +10,14 @@ class ProcessInboundCSVFile
     batch.on(:complete, UploadedCsvFile, 'uid' => uid)
     uploaded_file.batch_id = batch.bid
     uploaded_file.save
+
+    content = uploaded_file.file.read
+    detection = CharlockHolmes::EncodingDetector.detect(content)
+    utf8_encoded_content = CharlockHolmes::Converter.convert content, detection[:encoding], 'UTF-8'
+
     batch.jobs do
 
-      CSV.parse(uploaded_file.file.read, headers: true, :encoding => 'UTF-8:ISO-8859-1') do |row|
+      CSV.parse(utf8_encoded_content, headers: true, :encoding => 'UTF-8') do |row|
         row["external_id"] = row["id"]
         row.delete "id"
         r = Row.new(:data => row.to_json)
