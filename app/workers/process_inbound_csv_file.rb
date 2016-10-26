@@ -12,7 +12,7 @@ class ProcessInboundCSVFile
     uploaded_file.save
     batch.jobs do
 
-      CSV.parse(uploaded_file.file.read, headers: true, :encoding => 'ISO-8859-1') do |row|
+      CSV.parse(uploaded_file.file.read, headers: true, :encoding => 'UTF-8:ISO-8859-1') do |row|
         row["external_id"] = row["id"]
         row.delete "id"
         r = Row.new(:data => row.to_json)
