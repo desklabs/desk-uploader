@@ -1,6 +1,9 @@
 <%= flash[:notice] %>
 <br/>
-This app is in beta and should not be used on a production site.
+
+<div id="dev_news">This app is in beta.  No errors will be returned to you, although this is planned.</div>
+
+CSV file should be in this <a href="https://github.com/desklabs/Desk.com-CSV-to-Case/blob/master/CSV_Spec.md">format</a>. 
 
 <h4>Import customers</h4>
 	<%= form_tag import_customers_path, multipart: true do %>
@@ -11,7 +14,7 @@ This app is in beta and should not be used on a production site.
     <%= label_tag(:password, "Password:") %>
     <%= password_field_tag :password %><br/>
     <%= label_tag(:file, "Customer CSV File:") %>
-	  <%= file_field_tag :file %><br/>
-	  <%= submit_tag "Import CSV" %>
+	<%= file_field_tag :file %><br/>
+	<%= submit_tag "Import CSV" %>
 	<% end %>
 </div>
