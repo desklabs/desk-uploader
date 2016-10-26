@@ -49,6 +49,9 @@ gem 'redis'
 #gem 'rchardet'
 gem 'charlock_holmes'
 
+gem 'bootstrap', '~> 4.0.0.alpha3'
+
+
 gem 'rails_12factor'
 
 gem 'aws-sdk', '~> 2'
