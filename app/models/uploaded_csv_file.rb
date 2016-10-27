@@ -12,8 +12,6 @@ class UploadedCsvFile
 
   mount_uploader :file, CsvFileUploader
 
-
-
   def on_complete(status, options)
 
     puts "complete"
