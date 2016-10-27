@@ -17,13 +17,8 @@ class UploadedCsvFile
   def on_complete(status, options)
 
     puts "complete"
-    #puts "Uh oh, batch has failures" if status.failures != 0
     this_file = UploadedCsvFile.find(options['uid'])
-    if this_file.rows.failed.count == 0
-      UserNotifier.send_job_done_email_no_failures(this_file).deliver_now
-    else
-      UserNotifier.send_job_done_email_failures(this_file).deliver_now
-    end
+    UserNotifier.send_job_done_email(this_file).deliver_now
     this_file.user.destroy
   end
 
