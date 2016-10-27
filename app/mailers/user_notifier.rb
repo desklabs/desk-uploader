@@ -1,7 +1,7 @@
 class UserNotifier < ApplicationMailer
   include ActionView::Helpers::DateHelper
 
-  default :from => 'do_not_reply@example.com'
+  default :from => 'do_not_reply@desk.com'
 
   # send a signup email to the user, pass in the user object that   contains the user's email address
   def send_job_done_email_no_failures(file)
