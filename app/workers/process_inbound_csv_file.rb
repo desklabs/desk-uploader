@@ -1,6 +1,7 @@
 class ProcessInboundCSVFile
 
   include Sidekiq::Worker
+  sidekiq_options queue: 'files'
 
   def perform(uid)
     uploaded_file = UploadedCsvFile.find(id: uid)
