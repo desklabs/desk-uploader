@@ -3,14 +3,14 @@
 <h3>CSV file should be in this <a href="https://github.com/desklabs/Desk.com-CSV-to-Case/blob/master/CSV_Spec.md">format</a>.</h3>
 <h4>Import customers</h4>
 <%= form_tag import_customers_path, multipart: true do %>
-  <%= label_tag(:domain, "Domain:") %>
-  <%= text_field_tag :domain %><br/>
   <%= label_tag(:username, "Username:") %>
-  <%= text_field_tag :username %><br/>
+  <%= text_field_tag :username,nil, :required => true %><br/>
   <%= label_tag(:password, "Password:") %>
-  <%= password_field_tag :password %><br/>
+  <%= password_field_tag :password,nil, :required => true %><br/>
+  <%= label_tag(:domain, "Domain:") %>
+  <%= text_field_tag :domain,nil, :required => true %>.desk.com<br/>
   <%= label_tag(:file, "Customer CSV File:") %>
-  <%= file_field_tag :file %><br/>
+  <%= file_field_tag :file, :required => true %><br/>
   <%= submit_tag "Import CSV" %>
 <% end %>
 </div>
