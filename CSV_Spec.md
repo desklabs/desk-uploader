@@ -1,7 +1,7 @@
 ### Customers
 
 Every customer has 1 value for each of these fields: `id`, `first_name`,
-`last_name`, `title` and `company_id`. If you do not have something for the `id`
+`last_name`, `title` and `company_name`. If you do not have something for the `id`
 field, you can just use a serial number, i.e. 1,2,3...
 
 Every customer can have multiple values for `email` (10), `phone` (10),
@@ -33,7 +33,7 @@ value to the list in Desk.
 | **Column Name**   | **Field Description** | **Desk Field**  | **Data Type**                                                                         | **Required** | **Unique** | **Validations**                                                            | **Example 1**                        | **Example 2**                 |
 |-------------------|-----------------------|-----------------|---------------------------------------------------------------------------------------|--------------|------------|----------------------------------------------------------------------------|--------------------------------------|-------------------------------|
 | `id`              |                       | `id`            | String                                                                                | True         | True       |                                                                            | 8764387                              | Q3867                         |
-| `first_name`      | Customer’s first      | `first_name`    | String                                                                                | False        | False      |                                                                            | Jon                                  |                               |
+| `first_name`      |       | `first_name`    | String                                                                                | False        | False      |                                                                            | Jon                                  |                               |
 | `last_name`       |                       | `last_name`     | String                                                                                | False        | False      |                                                                            | Doe                                  |                               |
 | `title`           |                       | `title`         | String                                                                                | False        | False      |                                                                            | Mr.                                  |                               |
 | `company_name`      |                       | `company_name`    | String                                                                                | False        | False      |  | Acme Inc.                               |                               |
