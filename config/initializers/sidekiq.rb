@@ -1,5 +1,5 @@
 require 'autoscaler/sidekiq'
-require 'autoscaler/heroku_platform_scaler'
+#require 'autoscaler/heroku_platform_scaler'
 require 'autoscaler/linear_scaling_strategy'
 
 Sidekiq.configure_client do |config|
