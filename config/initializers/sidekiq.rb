@@ -9,7 +9,7 @@ if ENV['HEROKU_ACCESS_TOKEN'] and ENV['HEROKU_APP']
       heroku   = Autoscaler::HerokuPlatformScaler.new
       strategy = Autoscaler::DelayedShutdown.new(
         Autoscaler::LinearScalingStrategy.new(5, ENV['SIDEKIQ_CONCURRENCY'].to_i),
-        10
+        60
       )
       Autoscaler::Sidekiq::Client
       .add_to_chain(chain, 'files'=>heroku, 'rows'=>heroku, 'default'=>heroku)
@@ -21,7 +21,7 @@ if ENV['HEROKU_ACCESS_TOKEN'] and ENV['HEROKU_APP']
     config.server_middleware do |chain|
       strategy = Autoscaler::DelayedShutdown.new(
         Autoscaler::LinearScalingStrategy.new(5, ENV['SIDEKIQ_CONCURRENCY'].to_i),
-        10
+        60
       )
       chain.add(Autoscaler::Sidekiq::Server, Autoscaler::HerokuPlatformScaler.new, strategy)
     end
