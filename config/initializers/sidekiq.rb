@@ -11,6 +11,7 @@ end
 
 Sidekiq.configure_server do |config|
   config.server_middleware do |chain|
+    heroku = Autoscaler::LinearScalingStrategy.new(5,2)
     chain.add(Autoscaler::Sidekiq::Server, heroku, 60) # 60 second timeout
   end
 end
