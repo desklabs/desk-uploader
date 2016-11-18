@@ -33,7 +33,7 @@ require 'autoscaler/linear_scaling_strategy'
   Sidekiq.configure_server do |config|
     config.server_middleware do |chain|
       strategy = Autoscaler::DelayedShutdown.new(
-        Autoscaler::LinearScalingStrategy.new(10, 1),
+        Autoscaler::LinearScalingStrategy.new(5, 25),
         60
       )
       chain.add(Autoscaler::Sidekiq::Server, Autoscaler::HerokuPlatformScaler.new, strategy)
