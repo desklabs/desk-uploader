@@ -34,6 +34,8 @@ gem 'scout_apm'
 
 gem 'clockwork'
 
+gem 'autoscaler'
+
 gem 'mongoid'
 gem 'bson_ext'
 gem 'mongoid-encrypted-fields'
