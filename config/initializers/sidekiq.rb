@@ -12,8 +12,8 @@ if ENV['HEROKU_ACCESS_TOKEN'] and ENV['HEROKU_APP']
         10
       )
       Autoscaler::Sidekiq::Client
-      .add_to_chain(chain, 'files'=>heroku, 'rows'=>heroku, 'default'=>heroku)
-      .add_to_chain(strategy)
+      .add_to_chain(chain, 'files'=>heroku, 'rows'=>heroku, 'default'=>heroku, strategy)
+      #.set_initial_workers(strategy)
     end
   end
 
