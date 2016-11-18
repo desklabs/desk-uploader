@@ -11,8 +11,7 @@ if ENV['HEROKU_ACCESS_TOKEN'] and ENV['HEROKU_APP']
         Autoscaler::LinearScalingStrategy.new(ENV['MAX_WORKERS'].to_i, ENV['SIDEKIQ_CONCURRENCY'].to_i),
         10
       )
-
-      chain.add(Autoscaler::Sidekiq::Client
+      Autoscaler::Sidekiq::Client
       .add_to_chain(chain, 'files'=>heroku, 'rows'=>heroku, 'default'=>heroku)
       .set_initial_workers(strategy)
     end
