@@ -197,6 +197,10 @@ GEM
     rake (11.3.0)
     rdoc (4.3.0)
     redis (3.3.1)
+    redis-namespace (1.5.2)
+      redis (~> 3.0, >= 3.0.4)
+    rufus-scheduler (3.3.1)
+      tzinfo
     sass (3.4.22)
     sass-rails (5.0.6)
       railties (>= 4.0.0, < 6)
@@ -215,6 +219,10 @@ GEM
       redis (~> 3.2, >= 3.2.1)
     sidekiq-batch (0.1.1)
       sidekiq (>= 3)
+    sidekiq-cron (0.4.5)
+      redis-namespace (>= 1.5.2)
+      rufus-scheduler (>= 2.0.24)
+      sidekiq (>= 4.2.1)
     sidekiq-superworker (1.2.0)
       activemodel (>= 3.2)
       activesupport (>= 3.2)
@@ -279,6 +287,7 @@ DEPENDENCIES
   sdoc (~> 0.4.0)
   sidekiq
   sidekiq-batch
+  sidekiq-cron (~> 0.4.0)
   sidekiq-superworker
   smarter_csv
   spring

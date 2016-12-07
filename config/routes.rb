@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   root to: "customers#index"
 
   require 'sidekiq/web'
+  require 'sidekiq/cron/web'
   mount Sidekiq::Web => '/sidekiq'
 
   # The priority is based upon order of creation: first created -> highest priority.

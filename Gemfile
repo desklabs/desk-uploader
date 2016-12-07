@@ -25,6 +25,11 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 gem 'sidekiq'
+gem "sidekiq-cron", "~> 0.4.0"
+gem 'autoscaler'
+gem 'sidekiq-batch'
+gem 'sidekiq-superworker'
+
 # Use Unicorn as the app server
 gem 'puma'
 gem 'smarter_csv'
@@ -34,15 +39,13 @@ gem 'scout_apm'
 
 gem 'clockwork'
 
-gem 'autoscaler'
 
 gem 'mongoid'
 gem 'bson_ext'
 gem 'mongoid-encrypted-fields'
 gem "gibberish"
 gem 'desk_api'
-gem 'sidekiq-batch'
-gem 'sidekiq-superworker'
+
 gem 'newrelic_rpm'
 gem 'version'
 gem 'redis'
