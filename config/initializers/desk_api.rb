@@ -1,0 +1,1 @@
+DeskApi::Request::Retry.errors.delete(DeskApi::Error::TooManyRequests)

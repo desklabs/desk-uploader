@@ -77,7 +77,7 @@ class ProcessCustomerRow
 
     data[:phone_numbers] = phones_array unless phones_array == []
 
-    DeskApi.configure do |config|
+    d = DeskApi.configure do |config|
       # basic authentication
       config.username = details[:username]
       config.password = details[:password]
@@ -85,7 +85,9 @@ class ProcessCustomerRow
     end
 
     begin
-      new_customer = DeskApi.customers.create(data)
+      new_customer = d.customers.create(data)
+    rescue DeskApi::Error::TooManyRequests => e
+      ProcessCustomerRow.perform_in(e.rate_limit.retry_after, row_id)
     rescue DeskApi::Error => e
       #binding.pry
       row[:_failed] = true
