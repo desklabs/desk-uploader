@@ -39,6 +39,7 @@ gem 'scout_apm'
 
 gem 'clockwork'
 
+gem 'tunemygc'
 
 gem 'mongoid'
 gem 'bson_ext'
