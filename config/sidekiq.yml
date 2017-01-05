@@ -1,6 +1,7 @@
 ---
 :concurrency: <%= ENV['SIDEKIQ_CONCURRENCY'] %>
 :queues:
+  - system
   - files
   - rows
   - default
