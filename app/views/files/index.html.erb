@@ -2,7 +2,7 @@
 </br>
 <h3>CSV files should be in this <a href="https://github.com/desklabs/desk-uploader/blob/master/CSV_Spec.md">format</a>.</h3>
 <!-- <h4>Import CSV File</h4> -->
-<%= form_tag import_customers_path, multipart: true do %>
+<%= form_tag import_files_path, multipart: true do %>
   <%= label_tag(:username, "Username:") %>
   <%= text_field_tag :username,nil, :required => true %><br/>
   <%= label_tag(:password, "Password:") %>

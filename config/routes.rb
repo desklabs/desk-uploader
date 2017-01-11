@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   get 'home/import'
 
-  resources :customers do
+  resources :files do
     collection { post :import }
   end
   root to: "files#index"
