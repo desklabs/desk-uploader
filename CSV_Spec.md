@@ -33,7 +33,7 @@ Every customer has 1 value for each of these fields: `id`, `first_name`,
 `last_name`, `title` and `company_name`. If you do not have something for the `id`
 field, you can just use a serial number, i.e. 1,2,3...
 
-The `company` field should match the `name` field from the company file above.
+The `company_name` field should match the `name` field from the company file above.
 
 Every customer can have multiple values for `email` (10), `phone` (10),
 `address` (5). To accommodate this, we have adopted the format as follows:
