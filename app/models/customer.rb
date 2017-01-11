@@ -4,7 +4,7 @@ class Customer
 
 
     usr = User.create(:username => username, :domain => domain, :password => password)
-    u = UploadedCsvFile.create(:file => file)
+    u = UploadedCsvFile.create(:file => file, :type => "customer")
     usr.uploadedCsvFiles.push(u)
 
     ProcessInboundCSVFile.perform_async(u.id.to_s)

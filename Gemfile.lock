@@ -38,6 +38,7 @@ GEM
       tzinfo (~> 1.1)
     addressable (2.5.0)
       public_suffix (~> 2.0, >= 2.0.2)
+    anbt-sql-formatter (0.0.5)
     arel (6.0.3)
     autoprefixer-rails (6.5.4)
       execjs
@@ -156,6 +157,9 @@ GEM
     origin (2.2.2)
     platform-api (0.8.0)
       heroics (~> 0.0.17)
+    pp_sql (0.2.0)
+      anbt-sql-formatter (~> 0.0.5)
+      rails (>= 4.0.0)
     pry (0.10.4)
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
@@ -223,6 +227,9 @@ GEM
       redis (~> 3.2, >= 3.2.1)
     sidekiq-batch (0.1.1)
       sidekiq (>= 3)
+    sidekiq-bulk (0.1.1)
+      activesupport
+      sidekiq
     sidekiq-cron (0.4.5)
       redis-namespace (>= 1.5.2)
       rufus-scheduler (>= 2.0.24)
@@ -282,6 +289,7 @@ DEPENDENCIES
   mongoid
   mongoid-encrypted-fields
   newrelic_rpm
+  pp_sql
   pry-rails
   puma
   rails (= 4.2.6)
@@ -292,6 +300,7 @@ DEPENDENCIES
   sdoc (~> 0.4.0)
   sidekiq
   sidekiq-batch
+  sidekiq-bulk
   sidekiq-cron (~> 0.4.0)
   sidekiq-superworker
   smarter_csv

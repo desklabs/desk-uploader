@@ -29,6 +29,7 @@ gem "sidekiq-cron", "~> 0.4.0"
 gem 'autoscaler'
 gem 'sidekiq-batch'
 gem 'sidekiq-superworker'
+gem 'sidekiq-bulk'
 
 # Use Unicorn as the app server
 gem 'puma'
@@ -74,6 +75,7 @@ end
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 2.0'
+  gem 'pp_sql'
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'

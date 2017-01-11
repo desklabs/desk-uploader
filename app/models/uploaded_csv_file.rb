@@ -6,6 +6,7 @@ class UploadedCsvFile
 
   field :file, type: String
   field :batch_id, type: String
+  field :type, type: String
 
   belongs_to :user
   has_many :rows, dependent: :delete
