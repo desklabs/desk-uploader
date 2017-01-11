@@ -39,24 +39,24 @@ GEM
     addressable (2.5.0)
       public_suffix (~> 2.0, >= 2.0.2)
     anbt-sql-formatter (0.0.5)
-    arel (6.0.3)
-    autoprefixer-rails (6.5.4)
+    arel (6.0.4)
+    autoprefixer-rails (6.6.1)
       execjs
     autoscaler (0.12.0)
       heroku-api
       platform-api
       sidekiq (~> 4.0)
-    aws-sdk (2.6.38)
-      aws-sdk-resources (= 2.6.38)
-    aws-sdk-core (2.6.38)
+    aws-sdk (2.6.44)
+      aws-sdk-resources (= 2.6.44)
+    aws-sdk-core (2.6.44)
       aws-sigv4 (~> 1.0)
       jmespath (~> 1.0)
-    aws-sdk-resources (2.6.38)
-      aws-sdk-core (= 2.6.38)
+    aws-sdk-resources (2.6.44)
+      aws-sdk-core (= 2.6.44)
     aws-sigv4 (1.0.0)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
-    bootstrap (4.0.0.alpha5)
+    bootstrap (4.0.0.alpha6)
       autoprefixer-rails (>= 6.0.3)
       sass (>= 3.4.19)
     bson (4.2.1)
@@ -85,7 +85,7 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.12.2)
-    concurrent-ruby (1.0.3)
+    concurrent-ruby (1.0.4)
     connection_pool (2.2.1)
     debug_inspector (0.0.2)
     desk_api (0.6.2)
@@ -99,7 +99,7 @@ GEM
     erubis (2.7.0)
     excon (0.54.0)
     execjs (2.7.0)
-    faraday (0.10.0)
+    faraday (0.10.1)
       multipart-post (>= 1.2, < 3)
     gibberish (2.1.0)
     globalid (0.3.7)
@@ -118,7 +118,7 @@ GEM
       activesupport (>= 3.0.0, < 5.1)
       multi_json (~> 1.2)
     jmespath (1.3.1)
-    jquery-rails (4.2.1)
+    jquery-rails (4.2.2)
       rails-dom-testing (>= 1, < 3)
       railties (>= 4.2.0)
       thor (>= 0.14, < 2.0)
@@ -135,8 +135,8 @@ GEM
     mini_portile2 (2.1.0)
     minitest (5.10.1)
     moneta (0.8.1)
-    mongo (2.4.0)
-      bson (~> 4.2.0)
+    mongo (2.4.1)
+      bson (>= 4.2.1, < 5.0.0)
     mongoid (5.1.6)
       activemodel (~> 4.0)
       mongo (~> 2.1)
@@ -152,21 +152,24 @@ GEM
     multipart-post (2.0.0)
     netrc (0.11.0)
     newrelic_rpm (3.17.2.327)
-    nokogiri (1.6.8.1)
+    nokogiri (1.7.0.1)
       mini_portile2 (~> 2.1.0)
-    origin (2.2.2)
+    origin (2.3.0)
     platform-api (0.8.0)
       heroics (~> 0.0.17)
-    pp_sql (0.2.0)
+    pp_sql (0.2.3)
       anbt-sql-formatter (~> 0.0.5)
       rails (>= 4.0.0)
     pry (0.10.4)
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
       slop (~> 3.4)
+    pry-byebug (3.4.2)
+      byebug (~> 9.0)
+      pry (~> 0.10)
     pry-rails (0.3.4)
       pry (>= 0.9.10)
-    public_suffix (2.0.4)
+    public_suffix (2.0.5)
     puma (3.6.2)
     rack (1.6.5)
     rack-protection (1.5.3)
@@ -186,9 +189,9 @@ GEM
       sprockets-rails
     rails-deprecated_sanitizer (1.0.3)
       activesupport (>= 4.2.0.alpha)
-    rails-dom-testing (1.0.7)
+    rails-dom-testing (1.0.8)
       activesupport (>= 4.2.0.beta, < 5.0)
-      nokogiri (~> 1.6.0)
+      nokogiri (~> 1.6)
       rails-deprecated_sanitizer (>= 1.0.1)
     rails-html-sanitizer (1.0.3)
       loofah (~> 2.0)
@@ -207,25 +210,24 @@ GEM
     redis (3.3.2)
     redis-namespace (1.5.2)
       redis (~> 3.0, >= 3.0.4)
-    rufus-scheduler (3.3.1)
+    rufus-scheduler (3.3.2)
       tzinfo
-    sass (3.4.22)
+    sass (3.4.23)
     sass-rails (5.0.6)
       railties (>= 4.0.0, < 6)
       sass (~> 3.1)
       sprockets (>= 2.8, < 4.0)
       sprockets-rails (>= 2.0, < 4.0)
       tilt (>= 1.1, < 3)
-    scout_apm (2.1.17)
     sdoc (0.4.2)
       json (~> 1.7, >= 1.7.7)
       rdoc (~> 4.0)
-    sidekiq (4.2.7)
+    sidekiq (4.2.8)
       concurrent-ruby (~> 1.0)
       connection_pool (~> 2.2, >= 2.2.0)
       rack-protection (>= 1.5.0)
       redis (~> 3.2, >= 3.2.1)
-    sidekiq-batch (0.1.1)
+    sidekiq-batch (0.1.2)
       sidekiq (>= 3)
     sidekiq-bulk (0.1.1)
       activesupport
@@ -240,10 +242,10 @@ GEM
       sidekiq (>= 2.1.0)
     simple_oauth (0.3.1)
     slop (3.6.0)
-    smarter_csv (1.1.1)
+    smarter_csv (1.1.3)
     spring (2.0.0)
       activesupport (>= 4.2)
-    sprockets (3.7.0)
+    sprockets (3.7.1)
       concurrent-ruby (~> 1.0)
       rack (> 1, < 3)
     sprockets-rails (3.2.0)
@@ -253,7 +255,6 @@ GEM
     thor (0.19.4)
     thread_safe (0.3.5)
     tilt (2.0.5)
-    tunemygc (1.0.69)
     turbolinks (5.0.1)
       turbolinks-source (~> 5)
     turbolinks-source (5.0.0)
@@ -276,7 +277,6 @@ DEPENDENCIES
   aws-sdk (~> 2)
   bootstrap (~> 4.0.0.alpha3)
   bson_ext
-  byebug
   carrierwave-mongoid
   charlock_holmes
   clockwork
@@ -290,13 +290,13 @@ DEPENDENCIES
   mongoid-encrypted-fields
   newrelic_rpm
   pp_sql
+  pry-byebug
   pry-rails
   puma
   rails (= 4.2.6)
   rails_12factor
   redis
   sass-rails (~> 5.0)
-  scout_apm
   sdoc (~> 0.4.0)
   sidekiq
   sidekiq-batch
@@ -305,7 +305,6 @@ DEPENDENCIES
   sidekiq-superworker
   smarter_csv
   spring
-  tunemygc
   turbolinks
   uglifier (>= 1.3.0)
   version

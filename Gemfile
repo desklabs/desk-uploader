@@ -36,11 +36,11 @@ gem 'puma'
 gem 'smarter_csv'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
-gem 'scout_apm'
+#gem 'scout_apm'
 
 gem 'clockwork'
 
-gem 'tunemygc'
+#gem 'tunemygc'
 
 gem 'mongoid'
 gem 'bson_ext'
@@ -67,7 +67,7 @@ gem 'carrierwave-mongoid', :require => 'carrierwave/mongoid'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug'
+  gem 'pry-byebug'
   gem 'pry-rails'
   gem 'dotenv-rails'
 end

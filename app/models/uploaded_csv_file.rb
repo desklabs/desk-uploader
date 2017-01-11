@@ -20,4 +20,15 @@ class UploadedCsvFile
     this_file.user.destroy
   end
 
+  def self.import(file, domain, username, password, filetype)
+
+
+    usr = User.create(:username => username, :domain => domain, :password => password)
+    u = UploadedCsvFile.create(:file => file, :type => filetype)
+    usr.uploadedCsvFiles.push(u)
+
+    ProcessInboundCSVFile.perform_async(u.id.to_s)
+  end
+
+
 end
