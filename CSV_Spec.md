@@ -1,8 +1,39 @@
+
+### Companies
+
+Every company has 1 value for each of these fields: `id`, `name`. If you do not
+have something for the `id` field, you can just use a serial number, i.e.
+1,2,3...
+
+Note: Company `id` and `name` must*​* be unique.
+
+Every company can have multiple domains mapped to it. The `domains` field should
+be a comma separated list of domains that belong to the company.
+
+Every company can have multiple custom fields. You should have one column per
+custom field with the format:
+
+-   `custom_fieldkey`
+
+If the custom field is a `list` type, you should validate that values in the
+source data exist within the list in Desk. If not, you either (1) need to map
+the value to an existing value when building the export data or (2) add the
+value to the list in Desk.
+
+| **Column Name**   | **Field Description**                 | **Desk Field** | **Data Type**                                                                         | **Required** | **Unique** | **Validations**      | **Example 1**    | **Example 2**               |
+|-------------------|---------------------------------------|----------------|---------------------------------------------------------------------------------------|--------------|------------|----------------------|------------------|-----------------------------|
+| `id`              |                                       | `id`           | String                                                                                | True         | True       |                      | 8764387          | Q3867                       |
+| `name`            |                                       | `name`         | String                                                                                | True         | True       |                      | Acme Inc.        |                             |
+| `domains`         | Comma separated list of email domains | `domains`      | String                                                                                | False        | True       | Must be valid domain | domain.com       | domain.com, anotherone.net  |
+| `custom_fieldkey` |                                       |                | String for List, Text. `DateTime`for Date. Float for Number. `Boolean`for True/False. | False        | False      |                      | custom\_industry | custom\_current\_sales\_rep |
+
 ### Customers
 
 Every customer has 1 value for each of these fields: `id`, `first_name`,
 `last_name`, `title` and `company_name`. If you do not have something for the `id`
 field, you can just use a serial number, i.e. 1,2,3...
+
+The `company` field should match the `name` field from the company file above.
 
 Every customer can have multiple values for `email` (10), `phone` (10),
 `address` (5). To accommodate this, we have adopted the format as follows:
@@ -13,7 +44,7 @@ Every customer can have multiple values for `email` (10), `phone` (10),
 
 -   Addresses - `address_home`, `address_work`, `address_other`
 
-Note: `email_*` and `id` must be unique.
+Note: `email_*` and `id` must** be unique.
 
 You can use as many of each as needed. For example, if you have customers who
 have 2 mobile phone numbers, its OK to have 2 columns named `phone_mobile`.
