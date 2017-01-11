@@ -28,6 +28,8 @@ class ProcessCompanyRow
       case attr[0]
       when "name", "id"
         data[attr[0]] = attr[1]
+      when "domains"
+        data[:domains] = attr[1].split(',')
       end
     end
 
@@ -76,7 +78,6 @@ class ProcessCompanyRow
     # end
 
     # data[:phone_numbers] = phones_array unless phones_array == []
-
     d = DeskApi.configure do |config|
       # basic authentication
       config.username = details[:username]
