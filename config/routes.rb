@@ -1,14 +1,15 @@
 Rails.application.routes.draw do
-  get 'customer/index'
+  get 'home/index'
 
-  get 'customer/import'
+  get 'home/import'
 
-  resources :customers do
+  resources :files do
     collection { post :import }
   end
-  root to: "customers#index"
+  root to: "files#index"
 
   require 'sidekiq/web'
+  require 'sidekiq/cron/web'
   mount Sidekiq::Web => '/sidekiq'
 
   # The priority is based upon order of creation: first created -> highest priority.

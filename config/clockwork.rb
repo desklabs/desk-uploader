@@ -8,11 +8,14 @@ module Clockwork
     puts "Running #{job}, at #{time}"
   end
 
-  # every 10.seconds, 'frequent.job' do 
+  # every 10.seconds, 'frequent.job' do
   #   TestWorker.late_night_work
   # end
   #every(3.minutes, 'less.frequent.job')
-  #every(1.hour, 'hourly.job')
-
-  #every(1.day, 'midnight.job', :at => '00:00')
+  every(1.hour, 'hourly.job') do
+    PeriodicCleanup.perform_async()
+  end
+  # every(1.day, 'midnight.job', :at => '00:00') do
+  #   PeriodicCleanup.perform_async()
+  # end
 end

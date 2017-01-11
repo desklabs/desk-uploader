@@ -1,4 +1,4 @@
-class ProcessCustomerRow
+class ProcessCompanyRow
 
   include Sidekiq::Worker
   sidekiq_options :retry => 1
@@ -26,7 +26,7 @@ class ProcessCustomerRow
 
     decoded_row.each do |attr|
       case attr[0]
-      when "first_name", "last_name", "external_id", "title", "company"
+      when "name", "id"
         data[attr[0]] = attr[1]
       end
     end
@@ -41,41 +41,41 @@ class ProcessCustomerRow
 
     data[:custom_fields] = custom_fields unless custom_fields == {}
 
-    # look for any address_ columns and add them to the data hash
-    address_array = []
+    # # look for any address_ columns and add them to the data hash
+    # address_array = []
 
-    decoded_row.each do |attr|
-      if attr[0] =~ /^address_/
-        type = attr[0].gsub("address_","")
-        address_array << {"type": type, "value": attr[1]} unless attr[1].nil? or attr[1] == ""
-      end
-    end
+    # decoded_row.each do |attr|
+    #   if attr[0] =~ /^address_/
+    #     type = attr[0].gsub("address_","")
+    #     address_array << {"type": type, "value": attr[1]} unless attr[1].nil? or attr[1] == ""
+    #   end
+    # end
 
-    data[:addresses] = address_array unless address_array == []
+    # data[:addresses] = address_array unless address_array == []
 
-    # look for any email_ columns and add them to the data hash
-    emails_array = []
+    # # look for any email_ columns and add them to the data hash
+    # emails_array = []
 
-    decoded_row.each do |attr|
-      if attr[0] =~ /^email_/
-        type = attr[0].gsub("email_","")
-        emails_array << {"type": type, "value": attr[1]} unless attr[1].nil? or attr[1] == ""
-      end
-    end
+    # decoded_row.each do |attr|
+    #   if attr[0] =~ /^email_/
+    #     type = attr[0].gsub("email_","")
+    #     emails_array << {"type": type, "value": attr[1]} unless attr[1].nil? or attr[1] == ""
+    #   end
+    # end
 
-    data[:emails] = emails_array unless emails_array == []
+    # data[:emails] = emails_array unless emails_array == []
 
-    # look for any phone_ columns and add them to the data hash
-    phones_array = []
+    # # look for any phone_ columns and add them to the data hash
+    # phones_array = []
 
-    decoded_row.each do |attr|
-      if attr[0] =~ /^phone_/
-        type = attr[0].gsub("phone_","")
-        phones_array << {"type": type, "value": attr[1]} unless attr[1].nil? or attr[1] == ""
-      end
-    end
+    # decoded_row.each do |attr|
+    #   if attr[0] =~ /^phone_/
+    #     type = attr[0].gsub("phone_","")
+    #     phones_array << {"type": type, "value": attr[1]} unless attr[1].nil? or attr[1] == ""
+    #   end
+    # end
 
-    data[:phone_numbers] = phones_array unless phones_array == []
+    # data[:phone_numbers] = phones_array unless phones_array == []
 
     d = DeskApi.configure do |config|
       # basic authentication
@@ -85,9 +85,9 @@ class ProcessCustomerRow
     end
 
     begin
-      new_customer = d.customers.create(data)
+      new_company = d.companies.create(data)
     rescue DeskApi::Error::TooManyRequests => e
-      ProcessCustomerRow.perform_in(e.rate_limit.retry_after, row_id)
+      ProcessCompanyRow.perform_in(e.rate_limit.retry_after, row_id)
     rescue DeskApi::Error => e
       #binding.pry
       row[:_failed] = true
