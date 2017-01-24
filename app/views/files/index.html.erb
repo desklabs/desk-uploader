@@ -1,0 +1,20 @@
+<%= flash[:notice] %>
+</br>
+<h3>CSV files should be in this <a href="https://github.com/desklabs/desk-uploader/blob/master/CSV_Spec.md">format</a>.</h3>
+<!-- <h4>Import CSV File</h4> -->
+<%= form_tag import_files_path, multipart: true do %>
+  <%= label_tag(:username, "Username:") %>
+  <%= text_field_tag :username,nil, :required => true %><br/>
+  <%= label_tag(:password, "Password:") %>
+  <%= password_field_tag :password,nil, :required => true %><br/>
+  <%= label_tag(:domain, "Domain:") %>
+  <%= text_field_tag :domain,nil, :required => true %>.desk.com<br/>
+  <%= label_tag(:file, "CSV File:") %>
+  <%= file_field_tag :file, :required => true %><br/>
+  <%= label_tag(:filetype, "File Type:") %>
+  <%= radio_button_tag :filetype, 'customer',  false, :required => true %>Customer 
+  <%= radio_button_tag :filetype, 'company',  false, :required => true %>Company
+  <br/>
+  <%= submit_tag "Import CSV" %>
+<% end %>
+</div>

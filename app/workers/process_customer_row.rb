@@ -89,9 +89,15 @@ class ProcessCustomerRow
     rescue DeskApi::Error::TooManyRequests => e
       ProcessCustomerRow.perform_in(e.rate_limit.retry_after, row_id)
     rescue DeskApi::Error => e
-      #binding.pry
       row[:_failed] = true
       row[:_error] = e.to_s
+      x = 1
+      emails_array.each do |email|
+        col_name = "_error_details#{x}"
+        if d.customers.search(email[:value]).total_entries > 0
+          row[col_name] = "#{email[:value]} exists in Desk already."
+        end
+      end
       row.save
       #raise
     end

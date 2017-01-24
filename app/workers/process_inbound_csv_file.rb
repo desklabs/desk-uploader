@@ -23,7 +23,13 @@ class ProcessInboundCSVFile
         row.delete "id"
         r = Row.new(:data => row.to_json)
         uploaded_file.rows.push(r)
-        ProcessCustomerRow.perform_async(r.id.to_s)
+        case uploaded_file.type
+        when "customer"
+          ProcessCustomerRow.perform_async(r.id.to_s)
+        when "company"
+          ProcessCompanyRow.perform_async(r.id.to_s)
+        end
+
       end
 
     end

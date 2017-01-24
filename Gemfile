@@ -29,17 +29,18 @@ gem "sidekiq-cron", "~> 0.4.0"
 gem 'autoscaler'
 gem 'sidekiq-batch'
 gem 'sidekiq-superworker'
+gem 'sidekiq-bulk'
 
 # Use Unicorn as the app server
 gem 'puma'
 gem 'smarter_csv'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
-gem 'scout_apm'
+#gem 'scout_apm'
 
 gem 'clockwork'
 
-gem 'tunemygc'
+#gem 'tunemygc'
 
 gem 'mongoid'
 gem 'bson_ext'
@@ -66,7 +67,7 @@ gem 'carrierwave-mongoid', :require => 'carrierwave/mongoid'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug'
+  gem 'pry-byebug'
   gem 'pry-rails'
   gem 'dotenv-rails'
 end
@@ -74,6 +75,7 @@ end
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 2.0'
+  gem 'pp_sql'
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
