@@ -31,6 +31,8 @@ gem 'sidekiq-batch'
 gem 'sidekiq-superworker'
 gem 'sidekiq-bulk'
 
+
+gem 'bugsnag'
 # Use Unicorn as the app server
 gem 'puma'
 gem 'smarter_csv'
@@ -48,7 +50,6 @@ gem 'mongoid-encrypted-fields'
 gem "gibberish"
 gem 'desk_api'
 
-gem 'newrelic_rpm'
 gem 'version'
 gem 'redis'
 #gem 'fastercsv'
