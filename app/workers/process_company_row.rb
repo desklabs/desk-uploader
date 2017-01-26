@@ -29,7 +29,7 @@ class ProcessCompanyRow
       when "name", "id"
         data[attr[0]] = attr[1]
       when "domains"
-        data[:domains] = attr[1].strip.split(',')
+        data[:domains] = attr[1].gsub(/\s+/, "") .split(',')
       end
     end
 
