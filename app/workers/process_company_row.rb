@@ -92,7 +92,7 @@ class ProcessCompanyRow
     rescue DeskApi::Error => e
       Bugsnag.notify(e) do |notification|
 
-        notification.grouping_hash = exception.message + details[:domain]
+        notification.grouping_hash = e.message + details[:domain]
 
         # Add customer information to this report
         notification.add_tab(:data, data)
