@@ -90,6 +90,8 @@ class ProcessCompanyRow
     rescue DeskApi::Error::TooManyRequests => e
       ProcessCompanyRow.perform_in(e.rate_limit.retry_after, row_id)
     rescue DeskApi::Error => e
+      Bugsnag.notify(e)
+
       #binding.pry
       row[:_failed] = true
       row[:_error] = e.to_s
