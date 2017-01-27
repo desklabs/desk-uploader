@@ -93,6 +93,8 @@ class ProcessCustomerRow
 
       Bugsnag.notify(e) do |notification|
 
+        notification.grouping_hash = exception.message + details[:domain]
+
         # Add customer information to this report
         notification.add_tab(:data, data)
         notification.add_tab(:decoded_row, decoded_row)
