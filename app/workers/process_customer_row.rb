@@ -95,6 +95,8 @@ class ProcessCustomerRow
 
         # Add customer information to this report
         notification.add_tab(:data, data)
+        notification.add_tab(:row, decoded_row)
+        notification.add_tab(:domain, { domain: details[:domain]})
       end
 
       row[:_failed] = true
