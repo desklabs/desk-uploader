@@ -100,6 +100,7 @@ class ProcessCustomerRow
         end
       end
       row.save
+
       Bugsnag.notify(e) do |notification|
 
         notification.grouping_hash = e.message + details[:domain]
@@ -107,7 +108,10 @@ class ProcessCustomerRow
         notification.add_tab(:data, data)
         notification.add_tab(:decoded_row, decoded_row)
         notification.add_tab(:row, row.attributes)
-        notification.add_tab(:domain, { domain: details[:domain]})
+        notification.user = {
+          email: details[:username],
+          domain: details[:domain]
+        }
       end
     end
   end

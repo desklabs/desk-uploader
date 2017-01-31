@@ -6,6 +6,11 @@ class ProcessInboundCSVFile
   def perform(uid)
     uploaded_file = UploadedCsvFile.find(id: uid)
 
+    if uploaded_file.batch_id != nil
+      puts "file exists and is running"
+      return
+    end
+
     batch = Sidekiq::Batch.new
     batch.description = "ProcessInboundCSVFile"
     batch.on(:complete, UploadedCsvFile, 'uid' => uid)
