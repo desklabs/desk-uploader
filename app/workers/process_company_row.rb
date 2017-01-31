@@ -90,6 +90,11 @@ class ProcessCompanyRow
     rescue DeskApi::Error::TooManyRequests => e
       ProcessCompanyRow.perform_in(e.rate_limit.retry_after, row_id)
     rescue DeskApi::Error => e
+      #binding.pry
+      row[:_failed] = true
+      row[:_error] = e.to_s
+      row.save
+
       Bugsnag.notify(e) do |notification|
 
         notification.grouping_hash = e.message + details[:domain]
@@ -97,14 +102,12 @@ class ProcessCompanyRow
         # Add customer information to this report
         notification.add_tab(:data, data)
         notification.add_tab(:row, decoded_row)
-        notification.add_tab(:domain, { domain: details[:domain]})
+        notification.add_tab(:row, row.attributes)
+        notification.user = {
+          email: details[:username],
+          domain: details[:domain]
+        }
       end
-
-      #binding.pry
-      row[:_failed] = true
-      row[:_error] = e.to_s
-      row.save
-      #raise
     end
   end
 end
