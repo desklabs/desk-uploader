@@ -20,7 +20,16 @@ class ProcessCustomerRow
       return
     end
 
-    details = {:domain => row.uploadedCsvFile.user.domain, :username => row.uploadedCsvFile.user.username, :password => row.uploadedCsvFile.user.password}
+    details = {
+      :domain => row.uploadedCsvFile.user.domain,
+      :username => row.uploadedCsvFile.user.username,
+      :password => row.uploadedCsvFile.user.password,
+      :token => row.uploadedCsvFile.user.token,
+      :token_secret => row.uploadedCsvFile.user.token_secret,
+      :consumer_key => row.uploadedCsvFile.user.consumer_key,
+      :consumer_secret => row.uploadedCsvFile.user.consumer_secret,
+      :auth_type => row.uploadedCsvFile.user.auth_type
+    }
 
     data ={}
 
@@ -79,8 +88,15 @@ class ProcessCustomerRow
 
     d = DeskApi.configure do |config|
       # basic authentication
-      config.username = details[:username]
-      config.password = details[:password]
+      if details[:auth_type] == "password"
+        config.username = details[:username]
+        config.password = details[:password]
+      else
+        config.token           = details[:token]
+        config.token_secret    = details[:token_secret]
+        config.consumer_key    = details[:consumer_key]
+        config.consumer_secret = details[:consumer_secret]
+      end
       config.endpoint = "https://#{details[:domain]}.desk.com"
     end
 
