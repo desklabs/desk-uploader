@@ -22,7 +22,6 @@ class UserNotifier < ApplicationMailer
     @user = @this_file.user
     @failed_rows = @this_file.rows.failed
     @total_rows = @this_file.rows.count
-
     if @failed_rows.count > 0
 
       csv_string = CSV.generate do |csv|
@@ -41,6 +40,9 @@ class UserNotifier < ApplicationMailer
             csv_row << detail[1]
           end
           csv_row << fr._error
+          if defined? fr._error_details1
+            csv_row << fr._error_details1
+          end
           csv << csv_row
         end
 
