@@ -38,10 +38,6 @@
     }
   },
   "formation": {
-    "clock": {
-      "quantity": 1,
-      "size": "Standard-1X"
-    },
     "worker": {
       "quantity": 1,
       "size": "Standard-1X"
