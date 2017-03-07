@@ -1,5 +1,7 @@
 class FilesController < ApplicationController
   def index
+    Redis.new.ping
+
     #@customers = Customer.all
   end
 
