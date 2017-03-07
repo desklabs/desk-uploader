@@ -3,10 +3,26 @@
 <h3>CSV files should be in this <a href="https://github.com/desklabs/desk-uploader/blob/master/CSV_Spec.md">format</a>.</h3>
 <!-- <h4>Import CSV File</h4> -->
 <%= form_tag import_files_path, multipart: true do %>
-  <%= label_tag(:username, "Username:") %>
-  <%= text_field_tag :username,nil, :required => true %><br/>
-  <%= label_tag(:password, "Password:") %>
-  <%= password_field_tag :password,nil, :required => true %><br/>
+  <%= label_tag(:auth_type, "Authentication Type:") %>
+  <%= radio_button_tag :auth_type, 'password',  false, :required => true, :checked => true%>Password 
+  <%= radio_button_tag :auth_type, 'API',  false, :required => true %>API Tokens
+  <br/>
+  <div id="pw_fields">
+    <%= label_tag(:username, "Username:") %>
+    <%= text_field_tag :username,nil, :required => true %><br/>
+    <%= label_tag(:password, "Password:") %>
+    <%= password_field_tag :password,nil, :required => true %><br/>
+  </div>
+  <div id="api_fields">
+    <%= label_tag(:token, "Token:") %>
+    <%= text_field_tag :token,nil, :required => true %><br/>
+    <%= label_tag(:token_secret, "Token Secret:") %>
+    <%= password_field_tag :token_secret,nil, :required => true %><br/>
+    <%= label_tag(:consumer_key, "Consumer Key:") %>
+    <%= text_field_tag :consumer_key,nil, :required => true %><br/>
+    <%= label_tag(:consumer_secret, "Consumer Secret:") %>
+    <%= password_field_tag :consumer_secret,nil, :required => true %><br/>
+  </div>
   <%= label_tag(:domain, "Domain:") %>
   <%= text_field_tag :domain,nil, :required => true %>.desk.com<br/>
   <%= label_tag(:file, "CSV File:") %>
@@ -18,3 +34,50 @@
   <%= submit_tag "Import CSV" %>
 <% end %>
 </div>
+<script type="text/javascript">
+  jQuery(document).ready(function ()
+                  {
+                    usePW();
+                      $("input[name=auth_type]").change(radioValueChanged);
+                  })
+  
+                  function usePW()
+                  {
+                        $('#username').val('');
+                        $('#password').val('');
+                        $('#token').val('n/a');
+                        $('#token_secret').val('n/a');
+                        $('#consumer_key').val('n/a');
+                        $('#consumer_secret').val('n/a');
+                          $('#pw_fields').show();
+                          $('#api_fields').hide();
+                  }
+  
+                  function useAPI()
+                  {
+                        $('#username').val('n/a');
+                        $('#password').val('n/a');
+                        $('#token').val('');
+                        $('#token_secret').val('');
+                        $('#consumer_key').val('');
+                        $('#consumer_secret').val('');
+                          $('#pw_fields').hide();
+                          $('#api_fields').show();
+                  }
+                  function radioValueChanged()
+                  {
+                      radioValue = $(this).val();
+  
+                      console.log(radioValue);
+  
+                      if($(this).is(":checked") && radioValue == "API")
+                      {
+                        useAPI();
+                      }
+                      else
+                      {
+                        usePW();
+  
+                      }
+                  }
+</script>
