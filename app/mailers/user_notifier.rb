@@ -40,7 +40,7 @@ class UserNotifier < ApplicationMailer
             csv_row << detail[1]
           end
           csv_row << fr._error
-          if defined? fr._error_details1
+          if defined? fr._error_details1 != nil
             csv_row << fr._error_details1
           end
           csv << csv_row
