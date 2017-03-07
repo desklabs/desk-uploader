@@ -22,6 +22,8 @@ class UploadedCsvFile
 
   def self.import(file, domain, username, password, filetype, token, token_secret, consumer_key, consumer_secret, auth_type)
 
+    Redis.new.ping
+
 
     usr = User.create(
       :username => username,
