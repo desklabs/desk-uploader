@@ -20,10 +20,19 @@ class UploadedCsvFile
     this_file.user.destroy
   end
 
-  def self.import(file, domain, username, password, filetype)
+  def self.import(file, domain, username, password, filetype, token, token_secret, consumer_key, consumer_secret, auth_type)
 
 
-    usr = User.create(:username => username, :domain => domain, :password => password)
+    usr = User.create(
+      :username => username,
+      :domain => domain,
+      :password => password,
+      :token => token,
+      :token_secret => token_secret,
+      :consumer_key => consumer_key,
+      :consumer_secret => consumer_secret,
+      :auth_type => auth_type
+    )
     u = UploadedCsvFile.create(:file => file, :type => filetype)
     usr.uploadedCsvFiles.push(u)
 
