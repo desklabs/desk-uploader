@@ -20,3 +20,5 @@ passwords.txt
 Procfile.local
 
 procodile.log
+
+.github_changelog_generator
