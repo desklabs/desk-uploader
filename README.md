@@ -18,3 +18,4 @@ The basic process is:
 5.  For faster processing you can spin up more dynos on Heroku
 
  
+6. Test
