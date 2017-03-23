@@ -1,5 +1,21 @@
-<%= flash[:notice] %>
-
+ <!-- SUCCESS BOX -->
+ 	<% if flash[:notice] -%>
+	<div class="warning-box" style="background: #b7f597;">
+	<h3 style="background: #2ac72f;">
+		<span class="fa-stack fa-lg">
+			<i class="fa fa-check-circle fa-stack-1x "></i>
+		</span>
+		Pending Import
+	</h3>
+	<div class="warning-content">
+		<ul>
+		
+			<li><i class="fa-li fa fa-check"></i><%= flash[:notice] %></li>
+			
+    	</ul>
+	</div>
+	</div>
+	<% end %>
 
 <!-- <h4>Import CSV File</h4> -->
 <%= form_tag import_files_path, multipart: true do %>
