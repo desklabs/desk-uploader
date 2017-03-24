@@ -6,6 +6,9 @@ Rails.application.routes.draw do
   resources :files do
     collection { post :import }
   end
+
+  get 'internal' , to: 'files#index'
+
   root to: "files#index"
 
   require 'sidekiq/web'
