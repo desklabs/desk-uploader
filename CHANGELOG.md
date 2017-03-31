@@ -1,13 +1,5 @@
 # Change Log
 
-## [Unreleased](https://github.com/desklabs/desk-uploader/tree/HEAD)
-
-[Full Changelog](https://github.com/desklabs/desk-uploader/compare/0.5.1...HEAD)
-
-**Closed issues:**
-
-- Clean up UI [\#28](https://github.com/desklabs/desk-uploader/issues/28)
-
 ## [0.5.1](https://github.com/desklabs/desk-uploader/tree/0.5.1) (2017-03-31)
 [Full Changelog](https://github.com/desklabs/desk-uploader/compare/0.5.0...0.5.1)
 
