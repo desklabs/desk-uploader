@@ -31,6 +31,7 @@ gem 'sidekiq-batch'
 gem 'sidekiq-superworker'
 gem 'sidekiq-bulk'
 
+gem 'rails_autoscale_agent'
 
 gem 'bugsnag'
 # Use Unicorn as the app server
