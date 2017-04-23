@@ -1,5 +1,22 @@
 # Change Log
 
+## [Unreleased](https://github.com/desklabs/desk-uploader/tree/HEAD)
+
+[Full Changelog](https://github.com/desklabs/desk-uploader/compare/0.5.1...HEAD)
+
+**Closed issues:**
+
+- Clean up UI [\#28](https://github.com/desklabs/desk-uploader/issues/28)
+
+## [0.5.1](https://github.com/desklabs/desk-uploader/tree/0.5.1) (2017-03-31)
+[Full Changelog](https://github.com/desklabs/desk-uploader/compare/0.5.0...0.5.1)
+
+**Merged pull requests:**
+
+- New UI [\#27](https://github.com/desklabs/desk-uploader/pull/27) ([scotthargroves](https://github.com/scotthargroves))
+- Test commit [\#26](https://github.com/desklabs/desk-uploader/pull/26) ([scotthargroves](https://github.com/scotthargroves))
+- Adding API token credentials [\#25](https://github.com/desklabs/desk-uploader/pull/25) ([Skeyelab](https://github.com/Skeyelab))
+
 ## [0.5.0](https://github.com/desklabs/desk-uploader/tree/0.5.0) (2017-03-07)
 [Full Changelog](https://github.com/desklabs/desk-uploader/compare/0.4.0...0.5.0)
 

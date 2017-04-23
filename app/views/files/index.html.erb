@@ -1,87 +1,132 @@
-<%= flash[:notice] %>
-</br>
-<h3>CSV files should be in this <a href="https://github.com/desklabs/desk-uploader/blob/master/CSV_Spec.md">format</a>.</h3>
+ <!-- SUCCESS BOX -->
+<% if flash[:notice] -%>
+  <div class="warning-box" style="background: #b7f597;">
+    <h3 style="background: #2ac72f;">
+      <span class="fa-stack fa-lg">
+        <i class="fa fa-check-circle fa-stack-1x "></i>
+      </span>
+      Pending Import
+  </h3>
+    <div class="warning-content">
+      <ul>
+        <li><i class="fa-li fa fa-check"></i><%= flash[:notice] %></li>
+      </ul>
+    </div>
+  </div>
+<% end %>
 <!-- <h4>Import CSV File</h4> -->
 <%= form_tag import_files_path, multipart: true do %>
-  <%= label_tag(:auth_type, "Authentication Type:") %>
-  <%= radio_button_tag :auth_type, 'password',  false, :required => true, :checked => true%>Password 
-  <%= radio_button_tag :auth_type, 'API',  false, :required => true %>API Tokens
-  <br/>
-  <%= label_tag(:username, "Username:", id: 'username_label') %>
-  <%= text_field_tag :username,nil, :required => true %><br/>
+  <h3>Authentication Type</h3>
+  <p>
+    <%= radio_button_tag :auth_type, 'password',  false, :required => true, :checked => true%>
+    <label for="">Password Auth</label>
+    <br />
+    <%= radio_button_tag :auth_type, 'API',  false, :required => true %>
+    <label for="">API Auth</label>
+  </p>
+  <p>
+    <%= label_tag(:username, "Username", id: 'username_label') %>
+    <%= text_field_tag :username,nil, :required => true %>
+  </p>
   <div id="pw_fields">
-    <%= label_tag(:password, "Password:") %>
-    <%= password_field_tag :password,nil, :required => true %><br/>
+    <%= label_tag(:password, "Password") %>
+    <%= password_field_tag :password,nil, :required => true %>
   </div>
   <div id="api_fields">
-    <%= label_tag(:token, "Token:") %>
-    <%= text_field_tag :token,nil, :required => true %><br/>
-    <%= label_tag(:token_secret, "Token Secret:") %>
-    <%= password_field_tag :token_secret,nil, :required => true %><br/>
-    <%= label_tag(:consumer_key, "Consumer Key:") %>
-    <%= text_field_tag :consumer_key,nil, :required => true %><br/>
-    <%= label_tag(:consumer_secret, "Consumer Secret:") %>
-    <%= password_field_tag :consumer_secret,nil, :required => true %><br/>
-  </div>
-  <%= label_tag(:domain, "Domain:") %>
-  <%= text_field_tag :domain,nil, :required => true %>.desk.com<br/>
-  <%= label_tag(:file, "CSV File:") %>
-  <%= file_field_tag :file, :required => true %><br/>
-  <%= label_tag(:filetype, "File Type:") %>
-  <%= radio_button_tag :filetype, 'customer',  false, :required => true %>Customer 
-  <%= radio_button_tag :filetype, 'company',  false, :required => true %>Company
-  <br/>
-  <%= submit_tag "Import CSV" %>
-<% end %>
+    <p>
+      <%= label_tag(:token, "Token") %>
+      <%= text_field_tag :token,nil, :required => true %>
+    </p>
+    <p>
+      <%= label_tag(:token_secret, "Token Secret") %>
+      <%= password_field_tag :token_secret,nil, :required => true %>
+    </p>
+    <p>
+      <%= label_tag(:consumer_key, "Consumer Key") %>
+      <%= text_field_tag :consumer_key,nil, :required => true %>
+      <p>
+        <%= label_tag(:consumer_secret, "Consumer Secret") %>
+        <%= password_field_tag :consumer_secret,nil, :required => true %>
+      </p>
+    </div>
+    <%= label_tag(:domain, "Domain") %>
+    <%= text_field_tag :domain,nil, :required => true %>
+    <div class="warning-box" style="margin-bottom: 15px;">
+      <h3>
+        <span class="fa-stack fa-lg">
+          <i class="fa fa-exclamation-triangle fa-stack-1x "></i>
+        </span>
+        Important Information
+    </h3>
+      <div class="warning-content">
+        <ul class="fa-ul">
+          <li><i class="fa-li fa fa-exclamation"></i>Before uploading, please check that your CSV files are in this <a href="https://github.com/desklabs/desk-uploader/blob/master/CSV_Spec.md">format</a>.</li>
+        </ul>
+      </div>
+    </div>
+    <%= label_tag(:file, "CSV File") %>
+    <%= file_field_tag :file, :required => true %><br/>
+    <h3>File Type</h3>
+    <p>
+      <%= radio_button_tag :filetype, 'customer',  false, :required => true %>
+      <label for="">Customer</label>
+      <br />
+      <%= radio_button_tag :filetype, 'company',  false, :required => true %>
+      <label for="">Company</label>
+    </p>
+    <div class="form-button">
+      <%= submit_tag "Import CSV", :id => 'submit'%>
+    </div>
+  <% end %>
 </div>
 <script type="text/javascript">
   jQuery(document).ready(function ()
-                                      {
-                                        usePW();
-                                          $("input[name=auth_type]").change(radioValueChanged);
-                                      })
+                                        {
+                                          usePW();
+                                            $("input[name=auth_type]").change(radioValueChanged);
+                                        })
   
-                                      function usePW()
-                                      {
-                                            $('#username_label').text("Username:")
+                                        function usePW()
+                                        {
+                                              $('#username_label').text("Username")
   
-                                            $('#username').val('');
-                                            $('#password').val('');
-                                            $('#token').val('n/a');
-                                            $('#token_secret').val('n/a');
-                                            $('#consumer_key').val('n/a');
-                                            $('#consumer_secret').val('n/a');
-                                              $('#pw_fields').show();
-                                              $('#api_fields').hide();
-                                      }
+                                              $('#username').val('');
+                                              $('#password').val('');
+                                              $('#token').val('n/a');
+                                              $('#token_secret').val('n/a');
+                                              $('#consumer_key').val('n/a');
+                                              $('#consumer_secret').val('n/a');
+                                                $('#pw_fields').slideDown();
+                                                $('#api_fields').slideUp();
+                                        }
   
-                                      function useAPI()
-                                      {
-                                            //$('#username').val('n/a');
-                                            $('#username_label').text("Your Email:")
+                                        function useAPI()
+                                        {
+                                              //$('#username').val('n/a');
+                                              $('#username_label').text("Your Email")
   
-                                            $('#password').val('n/a');
-                                            $('#token').val('');
-                                            $('#token_secret').val('');
-                                            $('#consumer_key').val('');
-                                            $('#consumer_secret').val('');
-                                              $('#pw_fields').hide();
-                                              $('#api_fields').show();
-                                      }
-                                      function radioValueChanged()
-                                      {
-                                          radioValue = $(this).val();
+                                              $('#password').val('n/a');
+                                              $('#token').val('');
+                                              $('#token_secret').val('');
+                                              $('#consumer_key').val('');
+                                              $('#consumer_secret').val('');
+                                                $('#pw_fields').slideUp();
+                                                $('#api_fields').slideDown();
+                                        }
+                                        function radioValueChanged()
+                                        {
+                                            radioValue = $(this).val();
   
-                                          console.log(radioValue);
+                                            console.log(radioValue);
   
-                                          if($(this).is(":checked") && radioValue == "API")
-                                          {
-                                            useAPI();
-                                          }
-                                          else
-                                          {
-                                            usePW();
+                                            if($(this).is(":checked") && radioValue == "API")
+                                            {
+                                              useAPI();
+                                            }
+                                            else
+                                            {
+                                              usePW();
   
-                                          }
-                                      }
+                                            }
+                                        }
 </script>
