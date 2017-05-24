@@ -97,7 +97,13 @@ class ProcessCustomerRow
         config.consumer_key    = details[:consumer_key]
         config.consumer_secret = details[:consumer_secret]
       end
-      config.endpoint = "https://#{details[:domain]}.desk.com"
+
+      if details[:domain].include? "."
+        config.endpoint = "https://#{details[:domain]}"
+      else
+        config.endpoint = "https://#{details[:domain]}.desk.com"
+      end
+
     end
 
     begin
