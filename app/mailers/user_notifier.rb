@@ -12,7 +12,7 @@ class UserNotifier < ApplicationMailer
     @total_rows = @this_file.rows.count
 
     mail( :to => @user.username,
-          :subject => 'Import Complete' )
+          :subject => "Import Complete - #{@this_file.file_url.split('/')[-1]}" )
   end
 
   def send_job_done_email(file)
@@ -52,7 +52,7 @@ class UserNotifier < ApplicationMailer
     end
 
     mail( :to => @user.username,
-          :subject => 'Import Complete' )
+          :subject => "Import Complete - #{@this_file.file_url.split('/')[-1]}" )
   end
 
 end
