@@ -1,16 +1,18 @@
 # Change Log
 
-## [Unreleased](https://github.com/desklabs/desk-uploader/tree/HEAD)
-
-[Full Changelog](https://github.com/desklabs/desk-uploader/compare/0.5.1...HEAD)
-
-**Closed issues:**
-
-- Clean up UI [\#28](https://github.com/desklabs/desk-uploader/issues/28)
+## [0.5.3](https://github.com/desklabs/desk-uploader/tree/0.5.3) (2017-06-06)
+[Full Changelog](https://github.com/desklabs/desk-uploader/compare/0.5.2...0.5.3)
 
 **Merged pull requests:**
 
 - adding filename to results email [\#29](https://github.com/desklabs/desk-uploader/pull/29) ([Skeyelab](https://github.com/Skeyelab))
+
+## [0.5.2](https://github.com/desklabs/desk-uploader/tree/0.5.2) (2017-04-23)
+[Full Changelog](https://github.com/desklabs/desk-uploader/compare/0.5.1...0.5.2)
+
+**Closed issues:**
+
+- Clean up UI [\#28](https://github.com/desklabs/desk-uploader/issues/28)
 
 ## [0.5.1](https://github.com/desklabs/desk-uploader/tree/0.5.1) (2017-03-31)
 [Full Changelog](https://github.com/desklabs/desk-uploader/compare/0.5.0...0.5.1)
