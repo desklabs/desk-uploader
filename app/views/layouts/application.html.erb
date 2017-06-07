@@ -19,6 +19,12 @@
     <style>
       /* MOVE TO MASTER CSS */
       
+#footer {
+    position: absolute;
+    right: 0px;
+    text-align: right;
+}
+
           input[type="radio"] {
             width: 20px;
           }
@@ -78,6 +84,7 @@
       <div class="main">
         <%= yield %>
       </div>
+      <%= render 'layouts/footer' %>
       <!-- MAIN BODY CONTENT END -->
     </div>
     <!-- RIGHT SIDE CONTENT END -->
@@ -88,6 +95,7 @@
     <script src='https://desk-toolbox.herokuapp.com/sidebar.js'></script>
     <!-- LOAD IN CUSTOM JS -->
     <!-- FOOTER JS END -->
+
   </body>
 </html>
 <script type="text/javascript">
