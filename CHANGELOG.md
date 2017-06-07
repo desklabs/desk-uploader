@@ -1,5 +1,8 @@
 # Change Log
 
+## [0.5.4](https://github.com/desklabs/desk-uploader/tree/0.5.4) (2017-06-07)
+[Full Changelog](https://github.com/desklabs/desk-uploader/compare/0.5.3...0.5.4)
+
 ## [0.5.3](https://github.com/desklabs/desk-uploader/tree/0.5.3) (2017-06-06)
 [Full Changelog](https://github.com/desklabs/desk-uploader/compare/0.5.2...0.5.3)
 
