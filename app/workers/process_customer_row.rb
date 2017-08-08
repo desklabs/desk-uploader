@@ -35,7 +35,7 @@ class ProcessCustomerRow
 
     decoded_row.each do |attr|
       case attr[0]
-      when "first_name", "last_name", "external_id", "title", "company_name"
+      when "first_name", "last_name", "external_id", "title", "company"
         data[attr[0]] = attr[1]
       end
     end
